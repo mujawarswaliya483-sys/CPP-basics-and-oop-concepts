@@ -30,7 +30,7 @@ public:
 	}
 
 	float percentage(){
-		percent = (tot_marks()/5.0) * 100.0;
+		percent = (tot_marks()/500.0) * 100.0;
 		return percent;
 	}
 

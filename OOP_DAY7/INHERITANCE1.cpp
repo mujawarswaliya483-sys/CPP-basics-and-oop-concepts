@@ -12,6 +12,7 @@ public:
 
 class Student:public Person{
 public:
+
 	int rollNo;
 };
 

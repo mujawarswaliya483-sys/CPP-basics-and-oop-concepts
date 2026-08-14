@@ -18,7 +18,7 @@ public:
 
 int main(){
 	Print p1;
-	p1.show('&');
+	p1.show(8);
 
 	return 0;
 }

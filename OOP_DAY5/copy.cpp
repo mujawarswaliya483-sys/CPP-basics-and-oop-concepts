@@ -40,16 +40,10 @@ public:
 
 	}
 };
-
-
-
-
-
 int main(){
 	
 	Teacher t1("shradhaa","cse","c++",25000);
 	
-
 	Teacher t2(t1);
 	t2.getInfo(); //t1 data get copied in t2
 }

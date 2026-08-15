@@ -41,6 +41,7 @@ public:
 		cout<<"Gross Salary:"<<calculateGrossSalary()<<endl;
 	}
 };
+
 int main(){
 	Employee e;
 	e.input();

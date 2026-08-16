@@ -1,0 +1,2128 @@
+Absolutely. Since you’re doing C++ for DSA + OOP, I’ll make these notes useful for quick revision, coding practice, viva, and exams.
+
+C++ Detailed Revision Notes
+
+1. What is C++?
+
+C++ is a general-purpose programming language developed by Bjarne Stroustrup.
+
+It is an extension of C and supports multiple programming paradigms:
+
+Procedural programming
+
+Object-Oriented Programming (OOP)
+
+Generic programming
+
+Low-level/system programming
+
+
+For DSA, the most important C++ concepts are:
+
+> Variables → Conditions → Loops → Functions → Arrays → Strings → Pointers → References → Structures → Classes → STL → DSA
+
+
+
+
+---
+
+2. Basic Structure of a C++ Program
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello World";
+
+    return 0;
+}
+
+Explanation
+
+#include <iostream>
+
+Includes the input/output library.
+
+It allows us to use:
+
+cout
+cin
+
+using namespace std;
+
+Allows us to write:
+
+cout
+cin
+string
+
+instead of:
+
+std::cout
+std::cin
+std::string
+
+int main()
+
+Execution of the program starts from main().
+
+return 0
+
+Indicates successful termination of the program.
+
+
+---
+
+3. Comments
+
+Comments are ignored by the compiler.
+
+Single-line comment
+
+// This is a comment
+
+Multi-line comment
+
+/*
+This is
+a multi-line
+comment
+*/
+
+
+---
+
+4. Variables
+
+A variable is a named memory location used to store data.
+
+int age = 20;
+float price = 99.5;
+char grade = 'A';
+
+Syntax:
+
+data_type variable_name = value;
+
+Example:
+
+int marks = 90;
+
+Here:
+
+int → data type
+
+marks → variable
+
+90 → value
+
+
+
+---
+
+5. Data Types
+
+Fundamental data types
+
+Data Type	Example
+
+int	10
+float	10.5f
+double	10.555
+char	'A'
+bool	true / false
+void	no value
+
+
+Example:
+
+int a = 10;
+float b = 10.5;
+double c = 20.56789;
+char d = 'A';
+bool e = true;
+
+
+---
+
+6. Input and Output
+
+Output — cout
+
+cout << "Hello";
+
+Multiple values:
+
+int a = 10;
+cout << "Value = " << a;
+
+
+---
+
+Input — cin
+
+int age;
+
+cin >> age;
+
+Multiple inputs:
+
+int a, b;
+
+cin >> a >> b;
+
+
+---
+
+endl
+
+cout << "Hello" << endl;
+cout << "World";
+
+Output:
+
+Hello
+World
+
+You can also use:
+
+cout << "Hello\n";
+
+
+---
+
+7. Operators
+
+Arithmetic Operators
+
+Operator	Meaning
+
++	Addition
+-	Subtraction
+*	Multiplication
+/	Division
+%	Remainder
+
+
+Example:
+
+int a = 10;
+int b = 3;
+
+cout << a + b; // 13
+cout << a - b; // 7
+cout << a * b; // 30
+cout << a / b; // 3
+cout << a % b; // 1
+
+Important
+
+10 / 3
+
+gives:
+
+3
+
+because both are integers.
+
+But:
+
+10.0 / 3
+
+gives approximately:
+
+3.33333
+
+
+---
+
+8. Relational Operators
+
+Used for comparison.
+
+>
+<
+>=
+<=
+==
+!=
+
+Example:
+
+int a = 10;
+int b = 20;
+
+cout << (a < b);
+
+Output:
+
+1
+
+In C++:
+
+true → 1
+
+false → 0
+
+
+
+---
+
+9. Logical Operators
+
+AND &&
+
+Both conditions must be true.
+
+if(age >= 18 && age <= 60)
+
+OR ||
+
+At least one condition must be true.
+
+if(day == 6 || day == 7)
+
+NOT !
+
+Reverses the result.
+
+if(!isPresent)
+
+
+---
+
+10. Assignment Operators
+
+=
++=
+-=
+*=
+/=
+%=
+
+Example:
+
+int x = 10;
+
+x += 5;
+
+Equivalent to:
+
+x = x + 5;
+
+
+---
+
+11. Increment and Decrement
+
+Increment
+
+x++;
+
+Equivalent to:
+
+x = x + 1;
+
+Decrement
+
+x--;
+
+Equivalent to:
+
+x = x - 1;
+
+
+---
+
+Pre-increment vs Post-increment
+
+Pre-increment
+
+++x;
+
+First increments, then uses the value.
+
+Post-increment
+
+x++;
+
+First uses the value, then increments.
+
+Example:
+
+int x = 5;
+
+cout << x++;
+
+Output:
+
+5
+
+Now x = 6.
+
+But:
+
+int x = 5;
+
+cout << ++x;
+
+Output:
+
+6
+
+
+---
+
+12. Conditional Statements
+
+if
+
+if(condition)
+{
+    // code
+}
+
+Example:
+
+int age = 20;
+
+if(age >= 18)
+{
+    cout << "Adult";
+}
+
+
+---
+
+if-else
+
+if(condition)
+{
+    // true
+}
+else
+{
+    // false
+}
+
+Example:
+
+int n;
+
+cin >> n;
+
+if(n % 2 == 0)
+{
+    cout << "Even";
+}
+else
+{
+    cout << "Odd";
+}
+
+
+---
+
+13. else-if
+
+if(condition1)
+{
+}
+else if(condition2)
+{
+}
+else
+{
+}
+
+Example:
+
+int marks;
+
+cin >> marks;
+
+if(marks >= 90)
+{
+    cout << "A";
+}
+else if(marks >= 75)
+{
+    cout << "B";
+}
+else if(marks >= 50)
+{
+    cout << "C";
+}
+else
+{
+    cout << "Fail";
+}
+
+
+---
+
+14. Nested if
+
+An if inside another if.
+
+if(age >= 18)
+{
+    if(hasLicense)
+    {
+        cout << "Can drive";
+    }
+}
+
+
+---
+
+15. Ternary Operator
+
+Short form of if-else.
+
+Syntax:
+
+condition ? value1 : value2;
+
+Example:
+
+int n = 10;
+
+string result = (n % 2 == 0) ? "Even" : "Odd";
+
+
+---
+
+16. switch Statement
+
+Used when we have multiple fixed choices.
+
+int choice;
+
+cin >> choice;
+
+switch(choice)
+{
+    case 1:
+        cout << "Add";
+        break;
+
+    case 2:
+        cout << "Subtract";
+        break;
+
+    default:
+        cout << "Invalid";
+}
+
+Why break?
+
+Without break, execution continues into the next case.
+
+
+---
+
+17. Loops
+
+Loops are used to repeat code.
+
+Three important loops:
+
+1. for
+
+
+2. while
+
+
+3. do-while
+
+
+
+
+---
+
+18. for Loop
+
+Syntax:
+
+for(initialization; condition; update)
+{
+    // code
+}
+
+Example:
+
+for(int i = 1; i <= 5; i++)
+{
+    cout << i << " ";
+}
+
+Output:
+
+1 2 3 4 5
+
+Execution
+
+int i = 1
+     ↓
+condition
+     ↓
+body
+     ↓
+i++
+     ↓
+condition
+     ↓
+...
+
+
+---
+
+19. while Loop
+
+int i = 1;
+
+while(i <= 5)
+{
+    cout << i << " ";
+    i++;
+}
+
+The condition is checked before execution.
+
+
+---
+
+20. do-while Loop
+
+int i = 1;
+
+do
+{
+    cout << i << " ";
+    i++;
+}
+while(i <= 5);
+
+The body executes at least once.
+
+Difference
+
+Loop	Condition
+
+for	before
+while	before
+do-while	after
+
+
+
+---
+
+21. break
+
+Immediately terminates the loop.
+
+for(int i = 1; i <= 10; i++)
+{
+    if(i == 5)
+        break;
+
+    cout << i << " ";
+}
+
+Output:
+
+1 2 3 4
+
+
+---
+
+22. continue
+
+Skips the current iteration.
+
+for(int i = 1; i <= 5; i++)
+{
+    if(i == 3)
+        continue;
+
+    cout << i << " ";
+}
+
+Output:
+
+1 2 4 5
+
+
+---
+
+23. Functions
+
+A function is a block of code designed to perform a specific task.
+
+Example:
+
+void greet()
+{
+    cout << "Hello";
+}
+
+Calling:
+
+greet();
+
+
+---
+
+24. Function with Parameters
+
+void add(int a, int b)
+{
+    cout << a + b;
+}
+
+Calling:
+
+add(10, 20);
+
+Output:
+
+30
+
+
+---
+
+25. Function with Return Value
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+Calling:
+
+int result = add(10, 20);
+
+cout << result;
+
+Output:
+
+30
+
+
+---
+
+26. Function Components
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int → return type
+
+add → function name
+
+a, b → parameters
+
+return a+b → returned value
+
+
+
+---
+
+27. Call by Value
+
+A copy of the variable is passed.
+
+void change(int x)
+{
+    x = 100;
+}
+
+int main()
+{
+    int a = 10;
+
+    change(a);
+
+    cout << a;
+}
+
+Output:
+
+10
+
+Original a does not change.
+
+
+---
+
+28. Call by Reference
+
+Original variable is passed.
+
+void change(int &x)
+{
+    x = 100;
+}
+
+Now:
+
+int a = 10;
+
+change(a);
+
+cout << a;
+
+Output:
+
+100
+
+Remember
+
+int x
+
+→ copy
+
+int &x
+
+→ reference to original variable.
+
+
+---
+
+29. Arrays
+
+An array stores multiple values of the same data type.
+
+int arr[5];
+
+Initialization:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+Indexes start from:
+
+0
+
+So:
+
+arr[0] = 10
+arr[1] = 20
+arr[2] = 30
+arr[3] = 40
+arr[4] = 50
+
+
+---
+
+30. Traversing an Array
+
+int arr[] = {10, 20, 30, 40, 50};
+
+int n = sizeof(arr) / sizeof(arr[0]);
+
+for(int i = 0; i < n; i++)
+{
+    cout << arr[i] << " ";
+}
+
+Important formula
+
+sizeof(arr) / sizeof(arr[0])
+
+gives the number of elements when arr is an actual array in that scope.
+
+Example:
+
+sizeof(arr) = total bytes occupied
+sizeof(arr[0]) = bytes occupied by one element
+
+Therefore:
+
+total bytes / bytes per element
+= number of elements
+
+
+---
+
+31. Strings
+
+C++ provides string.
+
+#include <string>
+
+string name = "Swaliya";
+
+Input:
+
+cin >> name;
+
+But cin stops at whitespace.
+
+For a complete line:
+
+getline(cin, name);
+
+Example:
+
+string name;
+
+getline(cin, name);
+
+cout << name;
+
+
+---
+
+32. Important String Functions
+
+string s = "Hello";
+
+Length
+
+s.length();
+
+or:
+
+s.size();
+
+Access character
+
+s[0];
+
+Add character
+
+s.push_back('!');
+
+Remove last character
+
+s.pop_back();
+
+Compare
+
+s1 == s2
+
+
+---
+
+33. Pointers
+
+A pointer stores the address of another variable.
+
+int x = 10;
+
+int *p = &x;
+
+Here:
+
+x  → value
+&x → address
+p  → stores address of x
+*p → value stored at that address
+
+Example:
+
+cout << x;
+cout << &x;
+cout << p;
+cout << *p;
+
+
+---
+
+34. & and *
+
+These are extremely important.
+
+&
+
+Address-of operator.
+
+&x
+
+means:
+
+> address of x
+
+
+
+*
+
+Dereference operator.
+
+*p
+
+means:
+
+> value at the address stored in p
+
+
+
+
+---
+
+35. Dynamic Memory
+
+C++ provides:
+
+new
+delete
+
+Example:
+
+int *p = new int;
+
+*p = 10;
+
+cout << *p;
+
+delete p;
+
+Dynamic array:
+
+int *arr = new int[5];
+
+delete[] arr;
+
+
+---
+
+36. References
+
+A reference is another name/alias for an existing variable.
+
+int x = 10;
+
+int &ref = x;
+
+Now:
+
+ref = 20;
+
+also changes x.
+
+x = 20
+ref = 20
+
+
+---
+
+37. Structure
+
+A structure allows us to group different data types.
+
+struct Student
+{
+    string name;
+    int age;
+    float marks;
+};
+
+Create object:
+
+Student s;
+
+s.name = "Swaliya";
+s.age = 20;
+s.marks = 90;
+
+Access using:
+
+.
+
+
+---
+
+38. Class and Object
+
+This is one of the most important parts of C++ OOP.
+
+Class
+
+A class is a blueprint/template.
+
+class Student
+{
+public:
+    string name;
+    int age;
+};
+
+Object
+
+An object is an instance of a class.
+
+Student s1;
+
+Then:
+
+s1.name = "Swaliya";
+s1.age = 20;
+
+
+---
+
+39. Access Specifiers
+
+Three important access specifiers:
+
+public
+private
+protected
+
+public
+
+Accessible from outside the class.
+
+class Student
+{
+public:
+    int age;
+};
+
+private
+
+Accessible only inside the class.
+
+class Student
+{
+private:
+    int age;
+};
+
+protected
+
+Accessible inside the class and derived classes.
+
+
+---
+
+40. Constructor
+
+A constructor is automatically called when an object is created.
+
+It has the same name as the class.
+
+class Student
+{
+public:
+
+    Student()
+    {
+        cout << "Constructor called";
+    }
+};
+
+Object:
+
+Student s;
+
+Output:
+
+Constructor called
+
+
+---
+
+41. Parameterized Constructor
+
+class Student
+{
+public:
+
+    string name;
+
+    Student(string n)
+    {
+        name = n;
+    }
+};
+
+Object:
+
+Student s("Swaliya");
+
+cout << s.name;
+
+
+---
+
+42. Destructor
+
+A destructor is called when an object is destroyed.
+
+Syntax:
+
+~Student()
+{
+}
+
+Example:
+
+class Student
+{
+public:
+
+    ~Student()
+    {
+        cout << "Destructor called";
+    }
+};
+
+
+---
+
+43. Four Pillars of OOP
+
+Very important for exams/interviews.
+
+1. Encapsulation
+
+Wrapping data and methods together inside a class.
+
+2. Abstraction
+
+Showing essential information and hiding unnecessary implementation details.
+
+3. Inheritance
+
+One class acquiring properties of another class.
+
+4. Polymorphism
+
+One interface having multiple forms.
+
+
+---
+
+44. Inheritance
+
+Example:
+
+class Animal
+{
+public:
+    void eat()
+    {
+        cout << "Eating";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void bark()
+    {
+        cout << "Barking";
+    }
+};
+
+Now:
+
+Dog d;
+
+d.eat();
+d.bark();
+
+Dog inherited eat() from Animal.
+
+
+---
+
+45. Types of Inheritance
+
+Single
+
+A
+↓
+B
+
+Multilevel
+
+A
+↓
+B
+↓
+C
+
+Multiple
+
+A     B
+ \   /
+   C
+
+Hierarchical
+
+A
+   / \
+  B   C
+
+Hybrid
+
+Combination of multiple inheritance types.
+
+
+---
+
+46. Polymorphism
+
+Two major types:
+
+Compile-time polymorphism
+
+Function overloading
+
+Operator overloading
+
+
+Runtime polymorphism
+
+Function overriding
+
+Virtual functions
+
+
+
+---
+
+47. Function Overloading
+
+Same function name but different parameters.
+
+class Calculator
+{
+public:
+
+    int add(int a, int b)
+    {
+        return a + b;
+    }
+
+    int add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+};
+
+
+---
+
+48. Function Overriding
+
+Derived class provides its own implementation of a base class function.
+
+class Animal
+{
+public:
+    virtual void sound()
+    {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void sound() override
+    {
+        cout << "Bark";
+    }
+};
+
+
+---
+
+49. Virtual Function
+
+A virtual function enables runtime polymorphism.
+
+virtual void sound()
+{
+}
+
+Usually used with a base-class pointer/reference.
+
+
+---
+
+50. STL
+
+STL = Standard Template Library
+
+This is extremely important for DSA.
+
+STL provides ready-made:
+
+Containers
+
+Algorithms
+
+Iterators
+
+Functions/utilities
+
+
+Important containers:
+
+vector
+array
+string
+stack
+queue
+deque
+priority_queue
+set
+map
+unordered_set
+unordered_map
+
+
+---
+
+51. Vector
+
+A vector is a dynamic array.
+
+#include <vector>
+
+vector<int> v;
+
+Add:
+
+v.push_back(10);
+v.push_back(20);
+v.push_back(30);
+
+Output:
+
+for(int x : v)
+{
+    cout << x << " ";
+}
+
+
+---
+
+52. Important Vector Functions
+
+v.push_back(x);
+v.pop_back();
+v.size();
+v.empty();
+v.front();
+v.back();
+v.clear();
+
+Access:
+
+v[0];
+
+or:
+
+v.at(0);
+
+
+---
+
+53. Stack
+
+Stack follows:
+
+> LIFO — Last In First Out
+
+
+
+Example:
+
+stack<int> st;
+
+st.push(10);
+st.push(20);
+st.push(30);
+
+Top:
+
+st.top();
+
+Remove:
+
+st.pop();
+
+Check:
+
+st.empty();
+
+Size:
+
+st.size();
+
+
+---
+
+54. Queue
+
+Queue follows:
+
+> FIFO — First In First Out
+
+
+
+queue<int> q;
+
+q.push(10);
+q.push(20);
+q.push(30);
+
+Front:
+
+q.front();
+
+Back:
+
+q.back();
+
+Remove:
+
+q.pop();
+
+
+---
+
+55. Priority Queue
+
+Elements are arranged according to priority.
+
+By default, C++ provides a max heap.
+
+priority_queue<int> pq;
+
+pq.push(10);
+pq.push(30);
+pq.push(20);
+
+Then:
+
+pq.top();
+
+gives:
+
+30
+
+Min heap:
+
+priority_queue<int, vector<int>, greater<int>> pq;
+
+
+---
+
+56. Set
+
+A set:
+
+Stores unique elements
+
+Keeps them sorted
+
+
+set<int> s;
+
+s.insert(30);
+s.insert(10);
+s.insert(30);
+s.insert(20);
+
+Contains:
+
+10 20 30
+
+Duplicate 30 is ignored.
+
+
+---
+
+57. Map
+
+Stores:
+
+key → value
+
+Example:
+
+map<string, int> marks;
+
+marks["Swaliya"] = 90;
+marks["A"] = 80;
+
+Access:
+
+cout << marks["Swaliya"];
+
+
+---
+
+58. unordered_map
+
+Similar to map, but does not maintain sorted key order.
+
+unordered_map<string, int> mp;
+
+mp["apple"] = 10;
+mp["banana"] = 20;
+
+Average lookup is generally:
+
+O(1)
+
+while map operations are generally:
+
+O(log n)
+
+
+---
+
+59. Important Algorithms
+
+C++ STL provides algorithms.
+
+Include:
+
+#include <algorithm>
+
+Sort
+
+sort(arr, arr + n);
+
+Ascending order.
+
+Descending:
+
+sort(arr, arr + n, greater<int>());
+
+For vector:
+
+sort(v.begin(), v.end());
+
+
+---
+
+60. Reverse
+
+reverse(v.begin(), v.end());
+
+
+---
+
+61. Find
+
+find(v.begin(), v.end(), 10);
+
+It returns an iterator.
+
+You can check:
+
+if(find(v.begin(), v.end(), 10) != v.end())
+{
+    cout << "Found";
+}
+
+
+---
+
+62. Binary Search
+
+For a sorted range:
+
+binary_search(v.begin(), v.end(), 10);
+
+Returns:
+
+true / false
+
+
+---
+
+63. lower_bound
+
+Returns iterator pointing to the first element that is:
+
+> greater than or equal to the target.
+
+
+
+Example:
+
+vector<int> v = {1, 2, 2, 4, 5};
+
+auto it = lower_bound(v.begin(), v.end(), 2);
+
+Points to first 2.
+
+
+---
+
+64. upper_bound
+
+Returns iterator pointing to first element:
+
+> strictly greater than the target.
+
+
+
+For:
+
+1 2 2 4 5
+
+upper_bound(..., 2)
+
+points to:
+
+4
+
+
+---
+
+65. Iterators
+
+Iterator behaves somewhat like a pointer and is used to traverse STL containers.
+
+vector<int> v = {10, 20, 30};
+
+vector<int>::iterator it;
+
+for(it = v.begin(); it != v.end(); it++)
+{
+    cout << *it << " ";
+}
+
+Modern C++:
+
+for(auto it = v.begin(); it != v.end(); it++)
+{
+    cout << *it << " ";
+}
+
+
+---
+
+66. Range-Based for Loop
+
+Very useful.
+
+vector<int> v = {10, 20, 30};
+
+for(int x : v)
+{
+    cout << x << " ";
+}
+
+For modifying elements:
+
+for(int &x : v)
+{
+    x *= 2;
+}
+
+
+---
+
+67. auto
+
+auto allows C++ to automatically determine the type.
+
+auto x = 10;
+
+Compiler understands:
+
+int
+
+Example:
+
+auto it = v.begin();
+
+Useful with complicated iterator types.
+
+
+---
+
+68. Lambda Function
+
+A lambda is an anonymous function.
+
+Basic:
+
+auto add = [](int a, int b)
+{
+    return a + b;
+};
+
+cout << add(10, 20);
+
+Very commonly used with STL algorithms.
+
+
+---
+
+69. Recursion
+
+A function calling itself is called recursion.
+
+Example:
+
+void print(int n)
+{
+    if(n == 0)
+        return;
+
+    cout << n << " ";
+
+    print(n - 1);
+}
+
+Calling:
+
+print(5);
+
+Output:
+
+5 4 3 2 1
+
+Every recursion needs:
+
+1. Base case
+
+
+2. Recursive call
+
+
+
+Without a proper base case, recursion can continue indefinitely and cause stack overflow.
+
+
+---
+
+70. Important DSA Complexity
+
+You should start remembering these.
+
+Complexity	Example
+
+O(1)	Array access
+O(log n)	Binary search
+O(n)	Linear search
+O(n log n)	Merge sort / efficient comparison sorting
+O(n²)	Bubble sort
+O(2ⁿ)	Some recursive brute-force problems
+O(n!)	Permutation brute force
+
+
+
+---
+
+71. Important C++ Keywords for DSA
+
+You should be comfortable with:
+
+int
+char
+float
+double
+bool
+void
+if
+else
+for
+while
+do
+switch
+case
+break
+continue
+return
+class
+struct
+public
+private
+protected
+new
+delete
+const
+static
+virtual
+this
+
+
+---
+
+72. const
+
+const means the value cannot normally be modified through that variable.
+
+const int x = 10;
+
+This is invalid:
+
+x = 20;
+
+
+---
+
+73. this Pointer
+
+Inside a class, this points to the current object.
+
+Example:
+
+class Student
+{
+    int age;
+
+public:
+
+    Student(int age)
+    {
+        this->age = age;
+    }
+};
+
+Here:
+
+this->age
+
+refers to the object's data member.
+
+
+---
+
+74. Static
+
+A static data member is shared among all objects of the class.
+
+class Student
+{
+public:
+    static int count;
+};
+
+int Student::count = 0;
+
+Unlike normal instance data, there is only one shared static member.
+
+
+---
+
+75. Important Difference: C vs C++
+
+C	C++
+
+Procedural	Procedural + OOP
+printf()	cout
+scanf()	cin
+struct mainly groups data	class supports OOP
+No function overloading	Function overloading
+No references	References
+malloc/free	new/delete
+No STL	STL available
+
+
+
+---
+
+76. C++ Concepts You Should Know for DSA
+
+Before going deep into DSA, make sure you can comfortably write:
+
+Level 1 — Basics
+
+Variables
+
+Data types
+
+Input/output
+
+Operators
+
+if-else
+
+switch
+
+loops
+
+
+Level 2 — Programming
+
+Functions
+
+Arrays
+
+Strings
+
+Pointers
+
+References
+
+Recursion
+
+
+Level 3 — OOP
+
+Class
+
+Object
+
+Constructor
+
+Destructor
+
+Encapsulation
+
+Inheritance
+
+Polymorphism
+
+Abstraction
+
+
+Level 4 — STL
+
+Vector
+
+String
+
+Stack
+
+Queue
+
+Priority queue
+
+Set
+
+Map
+
+Unordered map
+
+Iterators
+
+Algorithms
+
+
+Level 5 — DSA
+
+Then move into:
+
+Arrays
+ ↓
+Searching
+ ↓
+Sorting
+ ↓
+Strings
+ ↓
+Linked List
+ ↓
+Stack
+ ↓
+Queue
+ ↓
+Recursion
+ ↓
+Trees
+ ↓
+Graphs
+ ↓
+Hashing
+ ↓
+Greedy
+ ↓
+Dynamic Programming
+
+
+---
+
+⭐ C++ Quick Revision Cheat Sheet
+
+INPUT
+cin >> x;
+
+OUTPUT
+cout << x;
+
+CONDITION
+if(condition) { }
+
+LOOP
+for(int i=0; i<n; i++) { }
+
+FUNCTION
+int add(int a, int b)
+{
+    return a+b;
+}
+
+ARRAY
+int arr[5];
+
+VECTOR
+vector<int> v;
+v.push_back(10);
+v.pop_back();
+
+STRING
+string s = "Hello";
+s.length();
+s.push_back('!');
+
+POINTER
+int *p = &x;
+*p
+
+REFERENCE
+int &r = x;
+
+STACK
+stack<int> st;
+st.push(x);
+st.pop();
+st.top();
+
+QUEUE
+queue<int> q;
+q.push(x);
+q.pop();
+q.front();
+
+PRIORITY QUEUE
+priority_queue<int> pq;
+pq.push(x);
+pq.top();
+
+SET
+set<int> s;
+s.insert(x);
+
+MAP
+map<int,int> mp;
+mp[key] = value;
+
+SORT
+sort(v.begin(), v.end());
+
+REVERSE
+reverse(v.begin(), v.end());
+
+BINARY SEARCH
+binary_search(v.begin(), v.end(), x);
+
+LOWER BOUND
+lower_bound(v.begin(), v.end(), x);
+
+UPPER BOUND
+upper_bound(v.begin(), v.end(), x);
+
+🎯 For your DSA preparation
+
+Don't try to memorize all of this at once. The highest-priority C++ topics for you right now are:
+
+Loops → Functions → Arrays → Strings → Pointers/References → Recursion → Vector → STL algorithms → Stack → Queue → Priority Queue → Map/Set.

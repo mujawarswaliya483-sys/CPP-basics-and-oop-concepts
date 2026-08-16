@@ -1,0 +1,1498 @@
+C++ OOP — Detailed Revision Notes
+
+Since you’re learning C++ for DSA + college practicals, these notes focus on the OOP concepts you actually need for coding, exams, viva, and interviews.
+
+
+---
+
+1. What is OOP?
+
+OOP = Object-Oriented Programming
+
+It is a programming approach where we organize programs around objects rather than only functions.
+
+An object contains:
+
+Data → properties/attributes
+
+Functions → behavior/methods
+
+Real-life example
+
+Think about a Student.
+
+Properties:
+
+name
+age
+rollNo
+marks
+
+Behaviors:
+
+study()
+attendClass()
+giveExam()
+
+In C++, we represent this using a class.
+
+
+---
+
+2. Class
+
+A class is a blueprint/template for creating objects.
+
+Example:
+
+class Student
+{
+public:
+    string name;
+    int age;
+
+    void study()
+    {
+        cout << "Student is studying";
+    }
+};
+
+Here:
+
+Student → class
+name    → data member
+age     → data member
+study() → member function
+
+The class itself is like a design.
+
+---
+
+3. Object
+
+An object is an instance of a class.
+
+Student s1;
+
+Here:
+
+Student → class
+s1      → object
+
+You can access members using the dot operator:
+
+s1.name = "Swaliya";
+s1.age = 20;
+
+s1.study();
+
+Simple way to remember
+
+Class  = Blueprint
+Object = Actual thing created from blueprint
+
+Example:
+
+Class  → Car design
+Object → BMW car
+Object → Audi car
+Object → Mercedes car
+
+---
+
+4. Basic Class Program
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+    int age;
+
+    void display()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+int main()
+{
+    Student s1;
+
+    s1.name = "Swaliya";
+    s1.age = 20;
+
+    s1.display();
+
+    return 0;
+}
+
+Execution
+
+Student class created
+        ↓
+Student s1
+        ↓
+Object s1 created
+        ↓
+s1.name = "Swaliya"
+        ↓
+s1.age = 20
+        ↓
+s1.display()
+
+
+---
+
+5. Data Members and Member Functions
+
+Inside a class, we mainly have:
+
+Data members
+
+Variables belonging to the object.
+
+string name;
+int age;
+
+Member functions
+
+Functions belonging to the class.
+
+void display()
+{
+    cout << name;
+}
+
+Example:
+
+class Student
+{
+public:
+
+    string name;     // data member
+    int age;         // data member
+
+    void display()   // member function
+    {
+        cout << name;
+    }
+};
+
+
+---
+
+6. Access Specifiers
+
+C++ has three major access specifiers:
+
+public
+private
+protected
+
+They control who can access class members.
+
+
+---
+
+7. public
+
+Members declared under public can be accessed from outside the class.
+
+class Student
+{
+public:
+    string name;
+    int age;
+};
+
+Then:
+
+Student s;
+
+s.name = "Swaliya";
+s.age = 20;
+
+This is allowed.
+
+
+---
+
+8. private
+
+Private members can be accessed only from inside the class.
+
+class Student
+{
+private:
+    int age;
+};
+
+This is not allowed:
+
+Student s;
+
+s.age = 20;   // Error
+
+Usually, private data is accessed using public functions.
+
+Example:
+
+class Student
+{
+private:
+    int age;
+
+public:
+
+    void setAge(int a)
+    {
+        age = a;
+    }
+
+    int getAge()
+    {
+        return age;
+    }
+};
+
+Use:
+
+Student s;
+
+s.setAge(20);
+
+cout << s.getAge();
+
+---
+
+9. protected
+
+protected members can be accessed:
+
+Inside the same class
+
+Inside derived/child classes
+
+
+But generally not directly from outside through an object.
+
+Example:
+
+class Parent
+{
+protected:
+    int x;
+};
+
+class Child : public Parent
+{
+public:
+    void show()
+    {
+        x = 10;
+        cout << x;
+    }
+};
+
+
+---
+
+10. Access Specifier Comparison
+
+Access	Same class	Derived class	Outside
+
+public	✅	✅	✅
+protected	✅	✅	❌
+private	✅	❌ directly	❌
+
+
+Remember:
+
+public     → everywhere
+protected  → class + child
+private    → class only
+
+
+---
+
+11. Encapsulation
+
+Encapsulation means wrapping data and functions together into a single unit, usually a class, and controlling access to the data.
+
+Example:
+
+class BankAccount
+{
+private:
+    double balance;
+
+public:
+
+    void setBalance(double b)
+    {
+        balance = b;
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};
+
+The data:
+
+balance
+
+is hidden from direct outside access.
+
+We use:
+
+setBalance()
+getBalance()
+
+to interact with it.
+
+Why encapsulation?
+
+It provides:
+
+Data protection
+
+Controlled access
+
+Better organization
+
+Easier maintenance
+
+---
+
+12. Abstraction
+
+Abstraction means hiding unnecessary implementation details and showing only the essential functionality.
+
+Real-life example:
+
+When you use an ATM:
+
+Insert card
+Enter PIN
+Withdraw money
+
+You don't need to know the internal banking implementation.
+
+Similarly:
+
+car.start();
+
+You don't need to know every internal operation required to start the engine.
+
+
+---
+
+13. Encapsulation vs Abstraction
+
+This is a common viva question.
+
+Encapsulation	                                  Abstraction
+
+Wraps data + functions	                         Hides implementation details
+Focuses on data protection	                     Focuses on essential functionality
+Achieved mainly using classes/access control	 Achieved using abstract classes/interfaces and suitable design
+"How to protect?"	                             "What should be shown?"
+
+
+Easy memory trick:
+
+> Encapsulation = wrapping + protection
+
+> Abstraction = hiding complexity
+
+---
+
+14. Constructor
+
+A constructor is a special member function that is automatically called when an object is created.
+
+Important properties:
+
+1. Same name as class
+
+2. No return type
+
+3. Automatically called
+
+4. Used to initialize objects
+
+
+Example:
+
+class Student
+{
+public:
+
+    Student()
+    {
+        cout << "Constructor called";
+    }
+};
+
+Object:
+
+Student s1;
+
+The constructor automatically runs.
+
+
+---
+
+15. Default Constructor
+
+A constructor that takes no arguments.
+
+class Student
+{
+public:
+
+    Student()
+    {
+        cout << "Student created";
+    }
+};
+
+Object:
+
+Student s;
+
+
+---
+
+16. Parameterized Constructor
+
+A constructor that takes parameters.
+
+class Student
+{
+public:
+    string name;
+    int age;
+
+    Student(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
+};
+
+Object:
+
+Student s("Swaliya", 20);
+
+
+---
+
+17. Constructor Overloading
+
+A class can have multiple constructors with different parameter lists.
+
+class Student
+{
+public:
+
+    Student()
+    {
+        cout << "Default";
+    }
+
+    Student(string name)
+    {
+        cout << "Name: " << name;
+    }
+
+    Student(string name, int age)
+    {
+        cout << name << " " << age;
+    }
+};
+
+This is an example of compile-time polymorphism.
+
+---
+
+18. Constructor Rules
+
+Remember these:
+
+Constructor:
+✓ Same name as class
+✓ No return type
+✓ Automatically called
+✓ Used for initialization
+✓ Can be overloaded
+✗ Cannot have a return type
+
+---
+
+19. Destructor
+
+A destructor is called automatically when an object is destroyed.
+
+Syntax:
+
+~ClassName()
+{
+}
+
+Example:
+
+class Student
+{
+public:
+
+    ~Student()
+    {
+        cout << "Destructor called";
+    }
+};
+
+Important
+
+Constructor:
+
+Student()
+
+Destructor:
+
+~Student()
+
+Destructor has a ~ before the class name.
+
+
+---
+
+20. Constructor vs Destructor
+
+Constructor	Destructor
+
+Initializes object	Cleans up object/resources
+Same name as class	~ + class name
+Called when object is created	Called when object is destroyed
+Can have parameters	Cannot take parameters
+Can be overloaded	Cannot be overloaded
+
+
+
+---
+
+21. this Pointer
+
+this is a pointer that refers to the current object.
+
+Example:
+
+class Student
+{
+private:
+    int age;
+
+public:
+
+    Student(int age)
+    {
+        this->age = age;
+    }
+};
+
+There are two ages:
+
+parameter age
+data member age
+
+This:
+
+this->age
+
+means:
+
+> current object's age
+
+
+
+while:
+
+age
+
+refers to the parameter.
+
+
+---
+
+22. Inheritance
+
+Inheritance allows one class to acquire properties and functions of another class.
+
+The existing class is called:
+
+Base class / Parent class
+
+The new class is called:
+
+Derived class / Child class
+
+Example:
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout << "Eating";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout << "Barking";
+    }
+};
+
+Now:
+
+Dog d;
+
+d.eat();
+d.bark();
+
+Dog inherited eat() from Animal.
+
+
+---
+
+23. Types of Inheritance
+
+1. Single Inheritance
+
+One parent → one child.
+
+A
+↓
+B
+
+class A
+{
+};
+
+class B : public A
+{
+};
+
+
+---
+
+24. Multilevel Inheritance
+
+Chain of inheritance.
+
+A
+↓
+B
+↓
+C
+
+Example:
+
+class Animal
+{
+};
+
+class Dog : public Animal
+{
+};
+
+class Puppy : public Dog
+{
+};
+
+
+---
+
+25. Multiple Inheritance
+
+One child inherits from multiple parents.
+
+A     B
+ \   /
+   C
+
+Example:
+
+class A
+{
+};
+
+class B
+{
+};
+
+class C : public A, public B
+{
+};
+
+
+---
+
+26. Hierarchical Inheritance
+
+One parent → multiple children.
+
+A
+     / \
+    B   C
+
+Example:
+
+class Animal
+{
+};
+
+class Dog : public Animal
+{
+};
+
+class Cat : public Animal
+{
+};
+
+
+---
+
+27. Hybrid Inheritance
+
+Combination of two or more inheritance types.
+
+Example:
+
+A
+     / \
+    B   C
+     \ /
+      D
+
+This can lead to the diamond problem, which can be addressed using virtual inheritance.
+
+
+---
+
+28. Polymorphism
+
+Polymorphism means:
+
+> One name/interface, multiple forms.
+
+
+
+Two major types:
+
+Compile-time polymorphism
+Runtime polymorphism
+
+
+---
+
+29. Compile-Time Polymorphism
+
+The decision is made during compilation.
+
+Main examples:
+
+Function overloading
+
+Operator overloading
+
+
+
+---
+
+30. Function Overloading
+
+Same function name but different parameters.
+
+class Calculator
+{
+public:
+
+    int add(int a, int b)
+    {
+        return a + b;
+    }
+
+    int add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+};
+
+Both functions have:
+
+add()
+
+but different parameter lists.
+
+
+---
+
+31. Rules of Function Overloading
+
+Functions can differ in:
+
+Number of parameters
+
+Type of parameters
+
+Order of parameter types
+
+
+Example:
+
+void show(int x);
+void show(double x);
+void show(int x, int y);
+
+Important
+
+Changing only the return type is not enough for overloading.
+
+Invalid:
+
+int add(int a);
+double add(int a);
+
+
+---
+
+32. Operator Overloading
+
+C++ allows operators to work with user-defined objects.
+
+Example:
+
+class Complex
+{
+public:
+    int real;
+
+    Complex(int r)
+    {
+        real = r;
+    }
+
+    Complex operator+(Complex obj)
+    {
+        return Complex(real + obj.real);
+    }
+};
+
+Then:
+
+Complex c1(10);
+Complex c2(20);
+
+Complex c3 = c1 + c2;
+
+The + operator is overloaded for objects.
+
+
+---
+
+33. Runtime Polymorphism
+
+Runtime polymorphism is generally achieved using:
+
+Inheritance
++
+Function overriding
++
+Virtual functions
+
+
+---
+
+34. Function Overriding
+
+When a derived class provides its own version of a base class function.
+
+class Animal
+{
+public:
+
+    virtual void sound()
+    {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound() override
+    {
+        cout << "Bark";
+    }
+};
+
+
+---
+
+35. Virtual Function
+
+A function declared with virtual in the base class can support dynamic dispatch when accessed through a base pointer/reference.
+
+Example:
+
+Animal *ptr;
+
+Dog d;
+
+ptr = &d;
+
+ptr->sound();
+
+Because sound() is virtual, the derived class version is called:
+
+Bark
+
+Without virtual, the behavior through a base pointer is different and normally resolves to the base implementation.
+
+
+---
+
+36. Function Overloading vs Overriding
+
+Very important.
+
+Overloading	Overriding
+
+Usually same class	Base + derived classes
+Different parameters	Same function signature
+Compile-time	Runtime when virtual dispatch is involved
+Inheritance not required	Inheritance required
+
+
+
+---
+
+37. Abstract Class
+
+A class containing at least one pure virtual function is an abstract class.
+
+Example:
+
+class Animal
+{
+public:
+
+    virtual void sound() = 0;
+};
+
+This:
+
+= 0
+
+makes it a pure virtual function.
+
+You cannot create an object of an abstract class:
+
+Animal a;   // Error
+
+But you can use a pointer/reference:
+
+Animal *ptr;
+
+and point it to a derived object.
+
+
+---
+
+38. Pure Virtual Function
+
+Syntax:
+
+virtual void sound() = 0;
+
+It means the base class requires derived classes to provide an implementation.
+
+Example:
+
+class Animal
+{
+public:
+
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound() override
+    {
+        cout << "Bark";
+    }
+};
+
+
+---
+
+39. Encapsulation Example
+
+A very common exam program:
+
+#include <iostream>
+using namespace std;
+
+class BankAccount
+{
+private:
+    double balance;
+
+public:
+
+    void setBalance(double b)
+    {
+        balance = b;
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};
+
+int main()
+{
+    BankAccount account;
+
+    account.setBalance(5000);
+
+    cout << account.getBalance();
+
+    return 0;
+}
+
+Here balance is protected from direct external access.
+
+
+---
+
+40. Inheritance Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout << "Animal is eating" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout << "Dog is barking" << endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}
+
+Output:
+
+Animal is eating
+Dog is barking
+
+
+---
+
+41. Runtime Polymorphism Example
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+public:
+
+    virtual void sound()
+    {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound() override
+    {
+        cout << "Bark";
+    }
+};
+
+int main()
+{
+    Animal *ptr;
+
+    Dog d;
+
+    ptr = &d;
+
+    ptr->sound();
+
+    return 0;
+}
+
+Output:
+
+Bark
+
+Important flow
+
+Animal pointer
+      ↓
+points to Dog object
+      ↓
+virtual function
+      ↓
+Dog::sound()
+      ↓
+Bark
+
+
+---
+
+42. Four Pillars of OOP ⭐
+
+You absolutely should remember these:
+
+OOP
+              |
+      -----------------
+      |       |       |
+ Encapsulation Abstraction
+      |
+Inheritance
+      |
+Polymorphism
+
+More clearly:
+
+1. Encapsulation
+
+Wrapping + protecting data
+
+2. Abstraction
+
+Hiding implementation complexity
+
+3. Inheritance
+
+Reusing/extending existing class
+
+4. Polymorphism
+
+One interface, multiple forms
+
+
+---
+
+43. Important OOP Keywords
+
+Keyword	Meaning
+
+class	Defines a class
+public	Public access
+private	Private access
+protected	Protected access
+this	Current object pointer
+virtual	Enables virtual dispatch
+override	Indicates overriding
+static	Shared class member / static storage
+friend	Grants special access
+new	Dynamic allocation
+delete	Dynamic deallocation
+
+
+
+---
+
+44. Static Data Member
+
+A static data member belongs to the class as a whole, rather than to each individual object.
+
+Example:
+
+class Student
+{
+public:
+
+    static int count;
+
+    Student()
+    {
+        count++;
+    }
+};
+
+int Student::count = 0;
+
+Now:
+
+Student s1;
+Student s2;
+Student s3;
+
+cout << Student::count;
+
+Output:
+
+3
+
+All objects share the same count.
+
+
+---
+
+45. Static Member Function
+
+A static member function belongs to the class rather than a particular object.
+
+class Student
+{
+public:
+
+    static void show()
+    {
+        cout << "Hello";
+    }
+};
+
+Call using:
+
+Student::show();
+
+A static member function does not have a this pointer and cannot directly access non-static data members.
+
+
+---
+
+46. Friend Function
+
+A friend function is not a member of the class, but it can access private/protected members if declared as a friend.
+
+class Student
+{
+private:
+    int marks = 90;
+
+public:
+
+    friend void display(Student s);
+};
+
+void display(Student s)
+{
+    cout << s.marks;
+}
+
+
+---
+
+47. Important OOP Differences
+
+Class vs Object
+
+Class	Object
+
+Blueprint	Instance
+Logical definition	Actual entity
+Doesn't represent a particular object	Represents a particular instance
+Example: Student	Example: s1
+
+
+
+---
+
+Constructor vs Normal Function
+
+Constructor	Normal Function
+
+Same name as class	Any valid name
+No return type	Can have return type
+Automatically called	Must generally be called explicitly
+Initializes objects	Performs operations
+
+
+
+---
+
+Private vs Protected
+
+Private	Protected
+
+Accessible within same class	Accessible within same class
+Not directly accessible in derived class	Accessible in derived class
+Not accessible outside	Not directly accessible outside
+
+
+
+---
+
+48. Most Important Viva Questions
+
+Q1. What is OOP?
+
+OOP is a programming paradigm based on objects that combine data and behavior.
+
+Q2. What is a class?
+
+A class is a blueprint/template for creating objects.
+
+Q3. What is an object?
+
+An object is an instance of a class.
+
+Q4. What are the four pillars of OOP?
+
+Encapsulation
+Abstraction
+Inheritance
+Polymorphism
+
+Q5. What is inheritance?
+
+Inheritance allows a derived class to acquire/reuse members of a base class.
+
+Q6. What is polymorphism?
+
+The ability of one interface/name to represent multiple forms.
+
+Q7. What is a constructor?
+
+A special member function automatically called when an object is created.
+
+Q8. What is a destructor?
+
+A special member function automatically called when an object is destroyed.
+
+Q9. Can a constructor return a value?
+
+No.
+
+Q10. Can constructors be overloaded?
+
+Yes.
+
+Q11. Can destructors be overloaded?
+
+No.
+
+Q12. What is function overloading?
+
+Multiple functions with the same name but different parameter lists.
+
+Q13. What is function overriding?
+
+A derived class provides its own implementation of an inherited function.
+
+Q14. What is a virtual function?
+
+A function declared virtual in a base class that enables dynamic dispatch through base pointers/references.
+
+Q15. What is an abstract class?
+
+A class having at least one pure virtual function.
+
+
+---
+
+⭐ One-Page OOP Revision
+
+OOP
+│
+├── Class
+│     └── Blueprint
+│
+├── Object
+│     └── Instance of class
+│
+├── Encapsulation
+│     └── Data + functions + controlled access
+│
+├── Abstraction
+│     └── Hide implementation details
+│
+├── Inheritance
+│     ├── Single
+│     ├── Multilevel
+│     ├── Multiple
+│     ├── Hierarchical
+│     └── Hybrid
+│
+├── Polymorphism
+│     ├── Compile-time
+│     │     ├── Function overloading
+│     │     └── Operator overloading
+│     │
+│     └── Runtime
+│           ├── Function overriding
+│           └── Virtual functions
+│
+├── Constructor
+│     ├── Default
+│     ├── Parameterized
+│     └── Copy constructor
+│
+├── Destructor
+│     └── ~ClassName()
+│
+├── Access Specifiers
+│     ├── public
+│     ├── private
+│     └── protected
+│
+└── Important
+      ├── this
+      ├── static
+      ├── friend
+      └── virtual
+
+🎯 What you should practice after these notes
+
+For your C++ OOP preparation, don't just read these. Practice programs in this order:
+
+1. Student class → 2. Rectangle class → 3. Bank Account → 4. Constructor → 5. Constructor overloading → 6. Encapsulation → 7. Single inheritance → 8. Multilevel inheritance → 9. Multiple inheritance → 10. Function overloading → 11. Operator overloading → 12. Function overriding → 13. Virtual function → 14. Abstract class → 15. Real-world OOP mini-program.
+
+These 15 programs will make the theory much easier to remember because you'll see where each OOP concept is actually used.
